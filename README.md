@@ -4,12 +4,6 @@ A full-stack movie ticket booking app (CineBook) built with the MERN stack. User
 
 ---
 
-## Screenshots
-
-_Add screenshots of Home, Movie Detail, Seat Selection, and Admin Dashboard here after deployment._
-
----
-
 ## Features
 
 ### User

@@ -19,6 +19,13 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // CORS: allow frontend origin (VITE_API_URL in prod, or * in dev)
 const isDev = process.env.NODE_ENV !== 'production';

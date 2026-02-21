@@ -21,10 +21,12 @@ const app = express();
 // Body parser
 app.use(express.json());
 
-// CORS — allow both Vercel frontend and localhost
+// CORS — allow all Vercel URLs and localhost
 app.use(cors({
   origin: [
+    'https://cine-book-book-your-favourite-movie.vercel.app',
     'https://cine-book-book-your-favour-git-2d4af3-tanmays-projects-431dae7e.vercel.app',
+    'https://cine-book-book-your-favourite-movies-q1y1w5ua7.vercel.app',
     'http://localhost:5173',
     'http://localhost:3000'
   ],

@@ -120,7 +120,7 @@ Open [http://localhost:5173](http://localhost:5173). Use the demo credentials ab
 
 ### MongoDB Atlas
 1. Create a cluster at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas).
-2. Get the connection string (e.g. `mongodb+srv://user:pass@cluster.mongodb.net/dbname?retryWrites=true&w=majority`).
+2. Get the connection string (e.g. `MONGO_URI`).
 3. Use this as `MONGO_URI` in backend env.
 
 ### Backend (Render)

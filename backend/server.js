@@ -5,6 +5,7 @@
 
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/authRoutes');
@@ -19,31 +20,24 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+
+// CORS — allow both Vercel frontend and localhost
+app.use(cors({
+  origin: [
+    'https://cine-book-book-your-favour-git-2d4af3-tanmays-projects-431dae7e.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Health check
 app.get('/', (req, res) => {
-  res.send('Backend is running');
+  res.send('CineBook Backend is running');
 });
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
-
-// CORS: allow frontend origin (VITE_API_URL in prod, or * in dev)
-const isDev = process.env.NODE_ENV !== 'production';
-const allowedOrigin = process.env.FRONTEND_URL || process.env.VITE_API_URL;
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (isDev) {
-    res.setHeader('Access-Control-Allow-Origin', origin || '*');
-  } else if (allowedOrigin && origin === allowedOrigin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.sendStatus(200);
-  next();
-});
-
-// Health check for Render/deployment
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });

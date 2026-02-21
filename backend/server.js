@@ -28,6 +28,7 @@ app.use(cors({
     'https://cine-book-book-your-favour-git-2d4af3-tanmays-projects-431dae7e.vercel.app',
     'https://cine-book-book-your-favourite-movies-q1y1w5ua7.vercel.app',
     'http://localhost:5173',
+    'http://localhost:5174',
     'http://localhost:3000'
   ],
   credentials: true,
